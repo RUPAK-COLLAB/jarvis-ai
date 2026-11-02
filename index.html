@@ -1,0 +1,129 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JARVIS AI</title>
+<style>
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at center, #09243c, #020811 70%);
+  color: #00d9ff;
+  font-family: Arial, sans-serif;
+  min-height: 100vh;
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 22px 35px;
+  border-bottom: 1px solid #087b9b;
+  letter-spacing: 4px;
+}
+.status { color: #39ffb0; font-size: 12px; }
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 35px 15px;
+}
+h1 { letter-spacing: 9px; font-size: 32px; }
+.ring {
+  width: 210px;
+  height: 210px;
+  border: 2px solid #00d9ff;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  margin: 25px;
+  box-shadow: 0 0 25px #00bfff, inset 0 0 25px #007bff;
+  animation: pulse 3s infinite;
+}
+.core {
+  width: 125px;
+  height: 125px;
+  border: 2px solid #64efff;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 38px;
+}
+@keyframes pulse {
+  50% { box-shadow: 0 0 45px #00d9ff, inset 0 0 40px #007bff; }
+}
+.subtitle { color: #83b8ca; letter-spacing: 3px; }
+.chat {
+  width: min(650px, 95%);
+  border: 1px solid #087b9b;
+  background: #041421cc;
+  padding: 18px;
+  margin-top: 25px;
+  border-radius: 10px;
+}
+#messages {
+  height: 170px;
+  overflow-y: auto;
+  color: #b9edff;
+  line-height: 1.6;
+}
+.entry { display: flex; gap: 8px; }
+input {
+  flex: 1;
+  min-width: 0;
+  background: #061e2c;
+  border: 1px solid #087b9b;
+  color: white;
+  padding: 13px;
+  outline: none;
+}
+button {
+  background: #007d9e;
+  color: white;
+  border: none;
+  padding: 12px 18px;
+  cursor: pointer;
+}
+button:hover { background: #00aaca; }
+footer { text-align: center; color: #477e91; margin: 30px; font-size: 12px; }
+</style>
+</head>
+<body>
+<header>
+  <div>J.A.R.V.I.S.</div>
+  <div class="status">● SYSTEM ONLINE</div>
+</header>
+<main>
+  <h1>JARVIS</h1>
+  <div class="ring"><div class="core">J</div></div>
+  <div class="subtitle">PERSONAL AI INTERFACE</div>
+  <section class="chat">
+    <div id="messages">
+      <div>JARVIS: Good evening. Systems are ready.</div>
+      <div>JARVIS: How may I assist you?</div>
+    </div>
+    <div class="entry">
+      <input id="message" placeholder="Enter your command..." />
+      <button onclick="sendMessage()">SEND</button>
+    </div>
+  </section>
+</main>
+<footer>JARVIS AI • PERSONAL ASSISTANT INTERFACE</footer>
+<script>
+function sendMessage() {
+  const input = document.getElementById("message");
+  const messages = document.getElementById("messages");
+  const value = input.value.trim();
+  if (!value) return;
+  const user = document.createElement("div");
+  user.textContent = "YOU: " + value;
+  messages.appendChild(user);
+  const reply = document.createElement("div");
+  reply.textContent = "JARVIS: Your message has been received. AI connection is not configured yet.";
+  messages.appendChild(reply);
+  input.value = "";
+  messages.scrollTop = messages.scrollHeight;
+}
+</script>
+</body>
+</html>
